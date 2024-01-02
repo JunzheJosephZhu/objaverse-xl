@@ -860,7 +860,7 @@ if __name__ == "__main__":
         default=12,
         help="Number of renders to save of the object.",
     )
-    argv = sys.argv[sys.argv.index("--") + 1 :]
+    argv = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else sys.argv[1:]
     args = parser.parse_args(argv)
 
     context = bpy.context

@@ -69,9 +69,10 @@ class ThingiverseDownloader(ObjaverseSource):
         Returns:
             Optional[requests.models.Response]: The response from the URL. If there was an error, returns None.
         """
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
         for i in range(max_retries):
             try:
-                response = requests.get(url, stream=True)
+                response = requests.get(url, headers=headers, stream=True)
                 # if successful, break out of loop
                 if response.status_code not in {200, 404}:
                     time.sleep(retry_delay)
